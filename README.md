@@ -2,15 +2,16 @@
 
 A self-contained, browser-based tool that automates the job application workflow end-to-end: tailored document generation, application tracking, and iterative refinement based on direct usage feedback.
 
-**Live demo:** _add your GitHub Pages URL here after deployment_
+**Live demo:** [nirman118.github.io/career-flow](https://nirman118.github.io/career-flow/)
 
 ## What it does
 
-CareerFlow is a single-page agentic tool built around the Claude API. It takes a job description and a candidate's base profile, and runs a multi-step pipeline:
+CareerFlow is a browser-based agentic tool built around the Claude API. It takes a structured candidate profile and a job description, and runs a multi-step pipeline:
 
-1. **Generate** — tailors a CV summary and cover letter to the specific job description, grounded strictly in the candidate's real background (no fabricated experience)
-2. **Track** — logs every application to a persistent pipeline view (Drafted → Applied → Screening → Interview → Offer / Rejected)
-3. **Refine** — each application supports a feedback loop: the candidate can request a regeneration with specific notes (e.g. "emphasize the SAP project more"), and CareerFlow keeps a full version history of every draft
+1. **Profile** — structured fields (header, competencies, education, experience, projects, certifications) matching a standard professional CV skeleton, filled in manually or auto-extracted from an uploaded `.docx` CV via Claude
+2. **Generate** — tailors a full CV and cover letter to the specific job description, following a hardcoded professional format (Profile summary → conditional Role Alignment table → Competencies → Education → Projects → Experience → Certifications), grounded strictly in the candidate's structured data — no fabricated experience, dates, or skills
+3. **Track** — logs every application to a persistent pipeline view (Drafted → Applied → Screening → Interview → Offer / Rejected)
+4. **Refine** — each application supports a feedback loop: the candidate can request a regeneration with specific notes (e.g. "emphasize the SAP project more"), and CareerFlow keeps a full version history of every draft
 
 ## Why it exists
 
@@ -32,6 +33,15 @@ career-flow/
 - **Claude API** — called directly from the browser for document generation (`anthropic-dangerous-direct-browser-access`)
 - **State** — application data, version history, and settings persist in `localStorage`; the user's own API key never leaves their browser except to call Anthropic's API directly
 - **Deployment** — static hosting via GitHub Pages
+
+## Security model
+
+CareerFlow is public and open-source, but no credentials or user data ever touch a shared server or database:
+
+- Each user's Claude API key lives only in **their own browser's `localStorage`** — it is never written into the code, never committed to this repo, and never transmitted anywhere except directly from the browser to Anthropic's API
+- Application data and version history are stored the same way — entirely local to the browser session that created them
+- Anyone visiting the live demo gets a blank Settings tab; using the tool requires pasting in *their own* API key, which stays isolated to their session
+- Clearing browser data, switching browsers, or switching devices resets the local key/data — there is no server-side account or sync
 
 ## Tech stack
 

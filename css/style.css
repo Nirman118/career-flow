@@ -162,3 +162,22 @@
   .status-msg{font-size:12px; margin-top:8px; font-family:var(--mono);}
   .status-msg.err{color:var(--warn);}
   .status-msg.ok{color:var(--ok);}
+
+  /* ---------- Repeatable entry cards (settings) ---------- */
+  .entry-card{
+    background:var(--panel-2); border:1px solid var(--border); border-radius:10px;
+    padding:16px; margin-bottom:12px; position:relative;
+  }
+  .entry-card .entry-remove{
+    position:absolute; top:12px; right:12px; background:none; border:none;
+    color:var(--muted); cursor:pointer; font-size:16px; line-height:1;
+  }
+  .entry-card .entry-remove:hover{color:var(--warn);}
+  .entry-card .row2{margin-bottom:10px;}
+  .entry-card textarea{min-height:70px;}
+  .entry-toggle{display:flex; align-items:center; gap:8px; margin-top:8px; font-size:12px; color:var(--muted);}
+  .entry-toggle input{width:auto;}
+  code{
+    background:var(--bg); border:1px solid var(--border); border-radius:4px;
+    padding:1px 5px; font-family:var(--mono); font-size:12px; color:var(--signal);
+  }

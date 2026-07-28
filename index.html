@@ -46,15 +46,78 @@
     </div>
 
     <div class="setup">
-      <h2>Your Base Profile</h2>
-      <p>Paste your core CV summary + experience once. Every generation uses this as ground truth so nothing gets fabricated.</p>
+      <h2>Auto-fill from an existing CV</h2>
+      <p>Upload a .docx CV — Claude reads it and pre-fills every field below. Review and correct before saving; nothing is written to your profile without your confirmation.</p>
       <div class="field">
-        <label>Base Profile / CV Text</label>
-        <textarea id="baseProfile" style="min-height:220px;" placeholder="Paste your CV summary, work experience, and key projects here..."></textarea>
+        <label>Upload CV (.docx)</label>
+        <input type="file" id="cvUpload" accept=".docx">
       </div>
-      <button class="btn" id="saveProfile">Save Profile</button>
-      <div class="status-msg" id="profileStatus"></div>
+      <button class="btn" id="parseCvBtn">Parse &amp; Auto-fill</button>
+      <div class="status-msg" id="parseStatus"></div>
     </div>
+
+    <div class="setup">
+      <h2>Header</h2>
+      <div class="row2">
+        <div class="field"><label>Full Name</label><input type="text" id="f_name"></div>
+        <div class="field"><label>Tagline / Target Focus</label><input type="text" id="f_tagline" placeholder="e.g. AI & Automation · Applied AI Tool Development"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Location</label><input type="text" id="f_location"></div>
+        <div class="field"><label>Languages</label><input type="text" id="f_languages" placeholder="e.g. English (fluent, C1+), German (Pursuing B1)"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>Phone</label><input type="text" id="f_phone"></div>
+        <div class="field"><label>Email</label><input type="text" id="f_email"></div>
+      </div>
+      <div class="row2">
+        <div class="field"><label>LinkedIn URL</label><input type="text" id="f_linkedin"></div>
+        <div class="field"><label>GitHub URL</label><input type="text" id="f_github"></div>
+      </div>
+      <div class="field">
+        <label>Availability</label>
+        <select id="f_availability_mode">
+          <option value="auto">Auto — always show current month at generation time</option>
+          <option value="manual">Manual — fixed text</option>
+        </select>
+      </div>
+      <div class="field" id="f_availability_manual_wrap" style="display:none;">
+        <input type="text" id="f_availability_manual" placeholder="e.g. Available from September 2026">
+      </div>
+    </div>
+
+    <div class="setup">
+      <h2>Technical Competencies</h2>
+      <p>One category per line, format: <code>Category: skill, skill, skill</code>. Generation will never invent skills outside this list.</p>
+      <div class="field"><textarea id="f_competencies" style="min-height:120px;" placeholder="AI & Automation Tools: Claude, Claude Code, GitHub...&#10;Programming & Scripting: Python, JavaScript, SQL..."></textarea></div>
+    </div>
+
+    <div class="setup">
+      <h2>Education</h2>
+      <div id="eduList"></div>
+      <button class="btn-ghost btn-small" id="addEdu">+ Add Education</button>
+    </div>
+
+    <div class="setup">
+      <h2>Work Experience</h2>
+      <div id="expList"></div>
+      <button class="btn-ghost btn-small" id="addExp">+ Add Experience</button>
+    </div>
+
+    <div class="setup">
+      <h2>Projects</h2>
+      <div id="projList"></div>
+      <button class="btn-ghost btn-small" id="addProj">+ Add Project</button>
+    </div>
+
+    <div class="setup">
+      <h2>Certifications</h2>
+      <div id="certList"></div>
+      <button class="btn-ghost btn-small" id="addCert">+ Add Certification</button>
+    </div>
+
+    <button class="btn" id="saveAllBtn">Save Profile</button>
+    <div class="status-msg" id="saveAllStatus"></div>
   </section>
 
   <!-- ===================== GENERATE ===================== -->
@@ -96,6 +159,7 @@
 
 <footer>CareerFlow — built &amp; deployed by Nirman Sharma · Claude API · Agentic document generation, tracking &amp; iterative refinement</footer>
 
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js"></script>
 <script src="js/app.js" defer></script>
 </body>
 </html>
