@@ -33,6 +33,15 @@ career-flow/
 - **State** — application data, version history, and settings persist in `localStorage`; the user's own API key never leaves their browser except to call Anthropic's API directly
 - **Deployment** — static hosting via GitHub Pages
 
+## Security model
+
+CareerFlow is public and open-source, but no credentials or user data ever touch a shared server or database:
+
+- Each user's Claude API key lives only in **their own browser's `localStorage`** — it is never written into the code, never committed to this repo, and never transmitted anywhere except directly from the browser to Anthropic's API
+- Application data and version history are stored the same way — entirely local to the browser session that created them
+- Anyone visiting the live demo gets a blank Settings tab; using the tool requires pasting in *their own* API key, which stays isolated to their session
+- Clearing browser data, switching browsers, or switching devices resets the local key/data — there is no server-side account or sync
+
 ## Tech stack
 
 `Claude API` · `JavaScript (ES6)` · `HTML/CSS` · `localStorage` · `GitHub Pages`
