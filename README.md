@@ -2,11 +2,7 @@
 
 A self-contained, browser-based tool that automates the job application workflow end-to-end: tailored document generation, application tracking, and iterative refinement based on direct usage feedback.
 
-<<<<<<< HEAD
 **Live demo:** [nirman118.github.io/career-flow](https://nirman118.github.io/career-flow/)
-=======
-**Live demo:** _(https://nirman118.github.io/career-flow/)_
->>>>>>> b253b5937f2e1df0d9ff10ab313fb2787eaa16dd
 
 ## What it does
 
@@ -55,7 +51,7 @@ CareerFlow is public and open-source, but no credentials or user data ever touch
 
 1. Clone this repo
 2. Open `index.html` in a browser (or serve it with any static server)
-3. Go to **Settings**, add your Claude API key and paste your base CV/profile text
+3. Go to **Settings**, add your Claude API key, then either upload an existing `.docx` CV to auto-fill your profile or fill in the structured fields (header, competencies, education, experience, projects, certifications) manually
 4. Go to **Generate**, paste a job description, and generate your first tailored application
 
 ## Roadmap
