@@ -2,7 +2,11 @@
 
 A self-contained, browser-based tool that automates the job application workflow end-to-end: tailored document generation, application tracking, and iterative refinement based on direct usage feedback.
 
+<<<<<<< HEAD
 **Live demo:** [nirman118.github.io/career-flow](https://nirman118.github.io/career-flow/)
+=======
+**Live demo:** _(https://nirman118.github.io/career-flow/)_
+>>>>>>> b253b5937f2e1df0d9ff10ab313fb2787eaa16dd
 
 ## What it does
 
